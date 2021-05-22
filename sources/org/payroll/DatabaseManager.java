@@ -73,11 +73,9 @@ public class DatabaseManager {
 	public Boolean verifyLoginId(String username) {
 		try {
 			
-		 ps = conn.prepareStatement("SELECT * FROM login_ids WHERE lower(username) = ? "); // secure from sql injection
-		 
-		username = username.toLowerCase();  // to make username case insesitive
-		ps.setString(0, username);			
-		 
+		ps = conn.prepareStatement("SELECT * FROM login_ids WHERE lower(username) = ? "); // secure from sql injection
+	        ps.setString(1,  username);			
+	 	
 		return ps.executeQuery().next();
 			
 			
