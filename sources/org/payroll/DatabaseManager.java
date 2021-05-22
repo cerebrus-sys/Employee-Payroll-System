@@ -75,7 +75,7 @@ public class DatabaseManager {
 			
 		 ps = conn.prepareStatement("SELECT * FROM login_ids WHERE lower(username) = ? "); // secure from sql injection
 		 
-		username = username.toLowerCase();
+		username = username.toLowerCase();  // to make username case insesitive
 		ps.setString(0, username);			
 		 
 		return ps.executeQuery().next();
