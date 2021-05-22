@@ -10,6 +10,7 @@ public class DatabaseManager {
 	
 	Connection conn;
 	Statement curs;
+	PreparedStatement ps;
 	
 	public DatabaseManager(String db) {
 		ConnectionString = "jdbc:sqlite:" + db;
@@ -71,9 +72,15 @@ public class DatabaseManager {
 	
 	public Boolean verifyLoginId(String username) {
 		try {
-			return curs.executeQuery(
-					"SELECT * FROM login_ids WHERE username=\"" + username + "\""
-				).next();
+			
+		 ps = conn.prepareStatement("SELECT * FROM login_ids WHERE lower(username) = ? "); // secure from sql injection
+		 
+		username = username.toLowerCase();
+		ps.setString(0, username);			
+		 
+		return ps.executeQuery().next();
+			
+			
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());
 		}
