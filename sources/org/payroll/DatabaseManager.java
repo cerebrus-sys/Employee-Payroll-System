@@ -285,5 +285,3 @@ public class DatabaseManager {
 		return employees.toArray(new Object[employees.size()][]);
 	}
 }
-
-
