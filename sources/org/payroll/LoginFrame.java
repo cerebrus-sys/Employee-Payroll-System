@@ -92,3 +92,6 @@ public class LoginFrame extends JFrame {
 		txt_password.setText("");
 	}
 }
+
+
+
