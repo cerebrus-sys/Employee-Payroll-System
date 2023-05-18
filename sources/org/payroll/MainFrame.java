@@ -246,3 +246,5 @@ public class MainFrame extends JFrame {
 		add(txt_loggedInAs, BorderLayout.SOUTH);
 	}
 }
+
+
